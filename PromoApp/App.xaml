@@ -1,0 +1,19 @@
+﻿<Application
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:promoApp="clr-namespace:PromoApp"
+    xmlns:converters="clr-namespace:PromoApp.Converters" xmlns:SampleData="clr-namespace:Expression.Blend.SampleData.OfficesItemSampleData" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:SampleData1="clr-namespace:Expression.Blend.SampleData.TestSampleData" mc:Ignorable="d"
+    x:Class="PromoApp.App"
+    >
+
+    <!--Application Resources-->
+    <Application.Resources>
+    	<SampleData:OfficesItemSampleData x:Key="OfficesItemSampleData" d:IsDataSource="True"/>
+		<promoApp:Bootstrapper x:Key="bootstrapper" />
+        <local:LocalizedStrings xmlns:local="clr-namespace:PromoApp" x:Key="LocalizedStrings"/>
+	    <converters:StringToLowerConverter x:Key="ToLower" />
+    </Application.Resources>
+
+</Application>
