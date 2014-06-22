@@ -13,5 +13,6 @@ namespace PromoApp.InterfaceModel
 		void SelectCity(long id);
 		Task<IEnumerable<Office>>  GetOfficesAsync();
 		Task<IEnumerable<Office>> GetOfficesForTests(IEnumerable<int> testsIds);
+		Task<FullOfficeModel> GetOfficeProfile(int id);
 	}
 }

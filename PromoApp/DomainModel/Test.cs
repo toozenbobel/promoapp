@@ -13,5 +13,7 @@ namespace PromoApp.DomainModel
 		public string GroupName { get; set; }
 		public string Name { get; set; }
 		public int Price { get; set; }
+		public int ReadyInDays { get; set; }
+		public IEnumerable<string> Remarks { get; set; }
 	}
 }

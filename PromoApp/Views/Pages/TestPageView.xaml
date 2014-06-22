@@ -1,0 +1,77 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="PromoApp.Views.Pages.TestPageView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pages="clr-namespace:PromoApp.ViewModels.Pages"
+    xmlns:controls="clr-namespace:PromoApp.Controls"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+	d:DataContext="{d:DesignInstance Type=pages:TestPageViewModel, IsDesignTimeCreatable=True}"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock Text="{Binding Model.Name, Converter={StaticResource ToUpper}}" Style="{StaticResource PhoneTextNormalStyle}"/>
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+			<ScrollViewer>
+				<StackPanel>
+					<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+						<TextBlock VerticalAlignment="Center" FontSize="{StaticResource PhoneFontSizeExtraLarge}" FontFamily="{StaticResource PhoneFontFamilyLight}" Foreground="{StaticResource PhoneAccentBrush}">
+						<Run Text="{Binding Model.Price}" />
+						<Run Text=" р."></Run>
+						</TextBlock>
+						<Button Content="Добавить в корзину" x:Name="AddToCart" VerticalAlignment="Center" Margin="18,0,0,0" />
+					</StackPanel>
+					<TextBlock Text="Готово" Margin="12,12,0,0" Foreground="{StaticResource PhoneSubtleBrush}" FontSize="{StaticResource PhoneFontSizeMedium}" />
+					<TextBlock Text="{Binding Model.ReadyInDays, Converter={StaticResource ReadyInDays}}" FontSize="{StaticResource PhoneFontSizeMediumLarge}" FontFamily="{StaticResource PhoneFontFamilySemiLight}" Margin="11,0,0,0" />
+					<TextBlock Text="Замечания" Foreground="{StaticResource PhoneSubtleBrush}" FontSize="{StaticResource PhoneFontSizeMedium}" Margin="12,12,0,0" />
+					<ItemsControl ItemsSource="{Binding Model.Remarks}" Margin="11,0,0,0" FontSize="{StaticResource PhoneFontSizeMediumLarge}" FontFamily="{StaticResource PhoneFontFamilySemiLight}" />
+					<TextBlock Text="Где сдать" Foreground="{StaticResource PhoneSubtleBrush}" FontSize="{StaticResource PhoneFontSizeMedium}" Margin="12,12,0,0" />
+					<ItemsControl ItemsSource="{Binding Offices}">
+						<ItemsControl.Resources>
+							<Style TargetType="ListBoxItem">
+								<Setter Property="HorizontalAlignment" Value="Stretch" />
+								<Setter Property="HorizontalContentAlignment" Value="Stretch" />
+							</Style>
+						</ItemsControl.Resources>
+						<ItemsControl.ItemTemplate>
+							<DataTemplate>
+								<controls:TapContainer controls:MetroInMotion.Tilt="3" TapCommand="{Binding TapCommand}">
+									<Border Background="{StaticResource PhoneChromeBrush}" Margin="12,8">
+										<Grid Margin="12">
+											<Grid.ColumnDefinitions>
+												<ColumnDefinition Width="*" />
+												<ColumnDefinition Width="Auto" />
+											</Grid.ColumnDefinitions>
+
+											<TextBlock Text="{Binding Model.Address}" />
+											<TextBlock Text="{Binding DistanceString}" Grid.Column="1" Margin="12,0,0,0" />
+										</Grid>
+									</Border>
+								</controls:TapContainer>
+							</DataTemplate>
+						</ItemsControl.ItemTemplate>
+					</ItemsControl>
+				</StackPanel>
+			</ScrollViewer>
+        </Grid>
+    </Grid>
+
+</phone:PhoneApplicationPage>

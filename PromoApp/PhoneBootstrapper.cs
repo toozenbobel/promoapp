@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Caliburn.Micro;
 using Microsoft.Phone.Controls;
+using PromoApp.Cache;
 using PromoApp.Implementation.SampleData;
 using PromoApp.InterfaceModel;
 using PromoApp.Models;
@@ -38,8 +39,12 @@ namespace PromoApp
 			_container.PerRequest<TestViewModel>();
 			_container.PerRequest<CartViewModel>();
 			_container.PerRequest<HandOverOfficesViewModel>();
+			_container.PerRequest<OfficeViewModel>();
+			_container.PerRequest<OfficePageViewModel>();
+			_container.PerRequest<TestPageViewModel>();
 
 			_container.Singleton<CartModel>();
+			_container.Singleton<TestsCache>();
 			_container.Singleton<ITestsModel, TestsModel>();
 			_container.Singleton<IAddressListModel, AddressListModel>();
 			_container.Singleton<ILocationModel, LocationModel>();
@@ -71,3 +76,4 @@ namespace PromoApp
 		}
 	}
 }
+

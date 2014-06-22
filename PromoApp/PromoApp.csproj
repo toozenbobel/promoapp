@@ -94,6 +94,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Cache\TestsCache.cs" />
     <Compile Include="Controls\BindingUtility.cs" />
     <Compile Include="Controls\EnumerableTreeExtensions.cs" />
     <Compile Include="Controls\ExtensionMethods.cs" />
@@ -113,14 +114,17 @@
     <Compile Include="Converters\InversedBooleanConverter.cs" />
     <Compile Include="Converters\NullToBooleanConverter.cs" />
     <Compile Include="Converters\NullToVisibilityConverter.cs" />
+    <Compile Include="Converters\ReadyInDaysConverter.cs" />
     <Compile Include="Converters\StringToGeoCoordinateConverter.cs" />
     <Compile Include="Converters\StringToLowerConverter.cs" />
     <Compile Include="Converters\StringToUpperConverter.cs" />
     <Compile Include="DomainModel\Address.cs" />
     <Compile Include="DomainModel\Discount.cs" />
+    <Compile Include="DomainModel\FullOfficeModel.cs" />
     <Compile Include="DomainModel\Office.cs" />
     <Compile Include="DomainModel\Test.cs" />
     <Compile Include="Helpers\Grouping.cs" />
+    <Compile Include="Helpers\RelayCommand.cs" />
     <Compile Include="Implementation\SampleData\CitiesService.cs" />
     <Compile Include="Implementation\SampleData\DiscountsService.cs" />
     <Compile Include="Implementation\SampleData\TestsService.cs" />
@@ -156,6 +160,8 @@
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\Pages\CartViewModel.cs" />
     <Compile Include="ViewModels\Pages\HandOverOfficesViewModel.cs" />
+    <Compile Include="ViewModels\Pages\OfficePageViewModel.cs" />
+    <Compile Include="ViewModels\Pages\TestPageViewModel.cs" />
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
@@ -173,6 +179,12 @@
     </Compile>
     <Compile Include="Views\Pages\HandOverOfficesView.xaml.cs">
       <DependentUpon>HandOverOfficesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\OfficePageView.xaml.cs">
+      <DependentUpon>OfficePageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\TestPageView.xaml.cs">
+      <DependentUpon>TestPageView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -276,6 +288,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Pages\HandOverOfficesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\OfficePageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\TestPageView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

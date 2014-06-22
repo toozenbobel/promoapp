@@ -7,6 +7,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:controls="clr-namespace:PromoApp.Controls"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -27,29 +28,34 @@
 			<TextBlock Text="Филиалы" />
 		</StackPanel>
 		
-		<ListBox ItemsSource="{Binding Offices}" Grid.Row="1">
-			<ListBox.ItemContainerStyle>
-				<Style TargetType="ListBoxItem">
-					<Setter Property="HorizontalAlignment" Value="Stretch" />
-					<Setter Property="HorizontalContentAlignment" Value="Stretch" />
-				</Style>
-			</ListBox.ItemContainerStyle>
-			<ListBox.ItemTemplate>
-				<DataTemplate>
-					<Border Background="{StaticResource PhoneChromeBrush}" Margin="12,8">
-						<Grid Margin="12">
-							<Grid.ColumnDefinitions>
-								<ColumnDefinition Width="*" />
-								<ColumnDefinition Width="Auto" />
-							</Grid.ColumnDefinitions>
-							
-							<TextBlock Text="{Binding Model.Address}" />
-							<TextBlock Text="{Binding DistanceString}" Grid.Column="1" Margin="12,0,0,0" />
-						</Grid>
-					</Border>
-				</DataTemplate>
-			</ListBox.ItemTemplate>
-		</ListBox>
+		<ScrollViewer Grid.Row="1">
+			<ItemsControl ItemsSource="{Binding Offices}">
+				<ItemsControl.Resources>
+					<Style TargetType="ListBoxItem">
+						<Setter Property="HorizontalAlignment" Value="Stretch" />
+						<Setter Property="HorizontalContentAlignment" Value="Stretch" />
+					</Style>
+				</ItemsControl.Resources>
+				<ItemsControl.ItemTemplate>
+					<DataTemplate>
+						<controls:TapContainer controls:MetroInMotion.Tilt="3" TapCommand="{Binding TapCommand}">
+							<Border Background="{StaticResource PhoneChromeBrush}" Margin="12,8">
+								<Grid Margin="12">
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition Width="*" />
+										<ColumnDefinition Width="Auto" />
+									</Grid.ColumnDefinitions>
+
+									<TextBlock Text="{Binding Model.Address}" />
+									<TextBlock Text="{Binding DistanceString}" Grid.Column="1" Margin="12,0,0,0" />
+								</Grid>
+							</Border>
+						</controls:TapContainer>
+					</DataTemplate>
+				</ItemsControl.ItemTemplate>
+			</ItemsControl>
+		</ScrollViewer>
+		
     </Grid>
 
 </phone:PhoneApplicationPage>

@@ -14,6 +14,8 @@
 		<promoApp:Bootstrapper x:Key="bootstrapper" />
         <local:LocalizedStrings xmlns:local="clr-namespace:PromoApp" x:Key="LocalizedStrings"/>
 	    <converters:StringToLowerConverter x:Key="ToLower" />
+	    <converters:StringToUpperConverter x:Key="ToUpper" />
+	    <converters:ReadyInDaysConverter x:Key="ReadyInDays" />
     </Application.Resources>
 
 </Application>

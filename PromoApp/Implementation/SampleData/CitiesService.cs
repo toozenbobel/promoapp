@@ -39,5 +39,28 @@ namespace PromoApp.Implementation.SampleData
 				new Office { Id = 1, CityId = 2, Address = "Советской армии 133", Lat = 53.2156862, Lon = 50.2137857 },
 			}.AsEnumerable());
 		}
+
+		public Task<FullOfficeModel> GetOfficeProfile(int id)
+		{
+			return Task.FromResult(new FullOfficeModel
+			{
+				Id = id,
+				CityId = 2,
+				Address = "г. Самара, ул. Ново-Садовая, д. 351А",
+				Lat = 53.252956,
+				Lon = 50.210022,
+				Description = "Центр обследования пациентов №1",
+				Phone = "+7 (846) 994-22-22",
+				Services = new[]
+				{
+					new Service { Name = "Центр работает в субботу" },
+					new Service { Name = "Оплата банковской картой" },
+					new Service { Name = "Анализы крови" },
+					new Service { Name = "Анализы кала" },
+					new Service { Name = "Урологические анализы" },
+					new Service { Name = "Анализы мочи" }
+				}
+			});
+		}
 	}
 }

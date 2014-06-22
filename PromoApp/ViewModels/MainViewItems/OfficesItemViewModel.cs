@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Caliburn.Micro;
 using PromoApp.DomainModel;
 using PromoApp.InterfaceModel;
 using PromoApp.Services;
@@ -71,7 +72,7 @@ namespace PromoApp.ViewModels.MainViewItems
 
 				var vms = offices.Select(x =>
 				{
-					OfficeViewModel vm = new OfficeViewModel();
+					OfficeViewModel vm = IoC.Get<OfficeViewModel>();
 					vm.Model = x;
 					vm.UserLocation = location;
 

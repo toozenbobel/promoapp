@@ -81,5 +81,10 @@ namespace PromoApp.Models
 
 			return null;
 		}
+
+		public async Task<FullOfficeModel> GetOfficeProfile(int id)
+		{
+			return await _citiesService.GetOfficeProfile(id);
+		}
 	}
 }

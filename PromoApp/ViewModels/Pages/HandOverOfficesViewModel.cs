@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Caliburn.Micro;
 using Expression.Blend.SampleData.OfficesItemSampleData;
+using PromoApp.DomainModel;
 using PromoApp.InterfaceModel;
 using PromoApp.Models;
 using PromoApp.ViewModels.Entities;
@@ -39,7 +40,7 @@ namespace PromoApp.ViewModels.Pages
 
 					var vms = offices.Select(x =>
 					{
-						OfficeViewModel vm = new OfficeViewModel();
+						OfficeViewModel vm = IoC.Get<OfficeViewModel>();
 						vm.Model = x;
 						vm.UserLocation = location;
 

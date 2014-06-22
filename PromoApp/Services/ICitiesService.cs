@@ -12,6 +12,7 @@ namespace PromoApp.Services
 		Task<IEnumerable<City>> GetCities();
 		Task<IEnumerable<Office>> GetOffices(int cityId);
 		Task<IEnumerable<Office>> GetOffices(int cityId, IEnumerable<int> testsIds);
+		Task<FullOfficeModel> GetOfficeProfile(int id);
 	}
 
 }

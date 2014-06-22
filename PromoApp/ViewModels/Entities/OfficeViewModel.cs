@@ -4,13 +4,23 @@ using System.Device.Location;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Caliburn.Micro;
 using PromoApp.DomainModel;
+using PromoApp.Helpers;
+using PromoApp.ViewModels.Pages;
 
 namespace PromoApp.ViewModels.Entities
 {
 	public class OfficeViewModel : PropertyChangedBase
 	{
+		private readonly INavigationService _navigationService;
+
+		public OfficeViewModel(INavigationService navigationService)
+		{
+			_navigationService = navigationService;
+		}
+
 		private Office _model;
 		public Office Model
 		{
@@ -62,6 +72,14 @@ namespace PromoApp.ViewModels.Entities
 				Distance = UserLocation.GetDistanceTo(modelLocation);
 			}
 			else Distance = 0;
+		}
+
+		public ICommand TapCommand
+		{
+			get
+			{
+				return new RelayCommand(() => _navigationService.UriFor<OfficePageViewModel>().WithParam(x => x.OfficeId, Model.Id).Navigate());
+			}
 		}
 	}
 }

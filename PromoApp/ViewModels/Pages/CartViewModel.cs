@@ -26,7 +26,7 @@ namespace PromoApp.ViewModels.Pages
 
 				TestsInCart = models.Select(x =>
 				{
-					TestViewModel vm = new TestViewModel();
+					TestViewModel vm = new TestViewModel(null);
 					vm.Model = x;
 					return vm;
 				}).ToList();

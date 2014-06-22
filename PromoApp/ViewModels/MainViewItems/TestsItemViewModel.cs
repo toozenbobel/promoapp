@@ -67,7 +67,7 @@ namespace PromoApp.ViewModels.MainViewItems
 					.OrderBy(x => x.Key)
 					.Select(x => new Grouping<string, TestViewModel>(x.Key, x.Select(i =>
 					{
-						var vm = new TestViewModel();
+						var vm = new TestViewModel(null);
 						vm.Model = i;
 						return vm;
 					}))).ToList();
